@@ -1757,7 +1757,7 @@ impl Editor {
         // store only successfully started language servers
         let language_servers = lang.as_ref().map_or_else(HashMap::default, |language| {
             self.language_servers
-                .get(language, path.as_ref(), root_dirs, config.lsp.snippets, config.lsp.autostart)
+                .get(language, path, root_dirs, config.lsp.snippets, config.lsp.autostart)
                 .filter_map(|(lang, client)| match client {
                     Ok(client) => Some((lang, client)),
                     Err(err) => {
